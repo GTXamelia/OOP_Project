@@ -2,13 +2,8 @@ package ie.gmit.sw;
 
 import java.awt.EventQueue;
 import java.awt.Image;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
