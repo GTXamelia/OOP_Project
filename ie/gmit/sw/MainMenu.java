@@ -35,17 +35,10 @@ public class MainMenu extends JFrame {
 	}
 
 	/**
-	 * Create the application.
-	 */
-	public MainMenu() {
-		initialize();
-	}
-
-	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame("GMIT - B.Sc. in Computing (Software Development)");
+	private MainMenu() {
+		frame = new JFrame("Animation");
 		frame.setBounds(100, 100, 500, 575);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -65,5 +58,10 @@ public class MainMenu extends JFrame {
 		});
 		btnPlay.setBounds(171, 280, 89, 23);
 		frame.getContentPane().add(btnPlay);
+	}
+	
+	// A function which closes the frame
+	public void CloseFrame() {
+		super.dispose();
 	}
 }
