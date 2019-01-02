@@ -17,7 +17,7 @@ public class Runner {
 					 * Toggle View: 'Z'		
 					 * ----------------------------------------
 					 */
-						new GameWindow(); //Could be done nicer?
+						MainMenu.main(args);
 				} catch (Exception e) {
 					e.printStackTrace(); //Real lazy stuff here...
 				}

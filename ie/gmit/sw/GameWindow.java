@@ -34,21 +34,41 @@ public class GameWindow {
 			{ 0, 0, 0, 0, 0, 0 , 0, 0, 0, 0}
 	};
 	
+	private JFrame frame;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main() {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					GameWindow window = new GameWindow();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
 	public GameWindow() throws Exception {
+		
+		
 		GameView view = new GameView(model, objects);
 		Dimension d = new Dimension(GameView.DEFAULT_VIEW_SIZE, GameView.DEFAULT_VIEW_SIZE/2);
 		view.setPreferredSize(d);
 		view.setMinimumSize(d);
 		view.setMaximumSize(d);
 
-		JFrame f = new JFrame("GMIT - B.Sc. in Computing (Software Development)");
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.getContentPane().setLayout(new FlowLayout());
-		f.add(view);
-		f.addKeyListener(view);
-		f.setSize(1000, 1000);
-		f.setLocation(100, 100);
-		f.pack();
-		f.setVisible(true);
+		frame = new JFrame("GMIT - B.Sc. in Computing (Software Development)");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new FlowLayout());
+		frame.add(view);
+		frame.addKeyListener(view);
+		frame.setSize(1000, 1000);
+		frame.setLocation(100, 100);
+		frame.pack();
+		frame.setVisible(true);
 	}
 }
