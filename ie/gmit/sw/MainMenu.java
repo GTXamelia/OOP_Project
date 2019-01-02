@@ -1,6 +1,7 @@
 package ie.gmit.sw;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -38,7 +39,9 @@ public class MainMenu extends JFrame {
 	 * Initialize the contents of the frame.
 	 */
 	private MainMenu() {
-		frame = new JFrame("Animation");
+		frame = new JFrame("GMIT - B.Sc. in Computing (Software Development)");
+		Image img = new ImageIcon(this.getClass().getResource("/resources/images/menu/castle.png")).getImage();
+		frame.setIconImage(img);
 		frame.setBounds(100, 100, 500, 575);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);

@@ -62,6 +62,8 @@ public class GameWindow {
 		view.setMaximumSize(d);
 
 		frame = new JFrame("GMIT - B.Sc. in Computing (Software Development)");
+		Image img = new ImageIcon(this.getClass().getResource("/resources/images/menu/castle.png")).getImage();
+		frame.setIconImage(img);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new FlowLayout());
 		frame.add(view);
