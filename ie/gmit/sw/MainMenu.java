@@ -1,11 +1,8 @@
 package ie.gmit.sw;
 
+import javax.swing.*;
 import java.awt.EventQueue;
 import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -50,8 +47,7 @@ public class MainMenu extends JFrame {
 		btnPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 					frame.dispose();
-					GameWindow.main();
-					
+					GameWindow.main();	
 			}
 		});
 		btnPlay.setBounds(171, 280, 89, 23);

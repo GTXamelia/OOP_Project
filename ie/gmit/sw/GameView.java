@@ -150,8 +150,9 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		} else if (e.getKeyCode() == KeyEvent.VK_X) {
 			player.move();
 		} else if (e.getKeyCode() == KeyEvent.VK_0) {
-			System.out.println("x " + player.getPosition().getX());
-			System.out.println("y " + player.getPosition().getY());
+			System.out.println("Direction: " + player.getDirection());
+			System.out.println("x: " + player.getPosition().getX());
+			System.out.println("y: " + player.getPosition().getY());
 		} else {
 			return;
 		}

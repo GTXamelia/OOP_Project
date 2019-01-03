@@ -35,6 +35,7 @@ public class GameWindow {
 	};
 	
 	private JFrame frame;
+	private JLabel infoLabel;
 
 	/**
 	 * Launch the application.
@@ -54,7 +55,6 @@ public class GameWindow {
 	
 	public GameWindow() throws Exception {
 		
-		
 		GameView view = new GameView(model, objects);
 		Dimension d = new Dimension(GameView.DEFAULT_VIEW_SIZE, GameView.DEFAULT_VIEW_SIZE/2);
 		view.setPreferredSize(d);
@@ -65,12 +65,30 @@ public class GameWindow {
 		Image img = new ImageIcon(this.getClass().getResource("/resources/images/menu/castle.png")).getImage();
 		frame.setIconImage(img);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new FlowLayout());
-		frame.add(view);
+		frame.getContentPane().setLayout(new BorderLayout(0, 0));
+		frame.getContentPane().add(view);
 		frame.addKeyListener(view);
+		
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.SOUTH);
+		
+		infoLabel = new JLabel("New label");
+		panel.add(infoLabel);
+		
 		frame.setSize(1000, 1000);
 		frame.setLocation(100, 100);
-		frame.pack();
+		frame.pack();;
+		
 		frame.setVisible(true);
 	}
+
+	public String getInfoLabel() {
+		return infoLabel.getText();
+	}
+
+	public void setInfoLabel(String text) {
+		this.infoLabel.setText(text);
+	}
+	
+	
 }

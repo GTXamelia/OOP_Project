@@ -18,6 +18,7 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 	private Direction direction = Direction.DOWN; //The current orientation of the sprite
 	private int index = 0; //The current image index.
 	private Point position; //The current x, y position
+	private GameWindow gameWindow;
 	
 	public Sprite(String name, Point p) {
 		super();
@@ -76,19 +77,19 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 		switch(direction.getOrientation()) {
 		case 1:
 			if(position.getY()+1 < 10)
-			position.setY(position.getY() + 1); //UP
+				position.setY(position.getY() + 1); //UP
 			break;
 		case 2:
 			if(position.getX()-1 > -1)
-			position.setX(position.getX() - 1); //DOWN
+				position.setX(position.getX() - 1); //DOWN
 			break;
 		case 3:
 			if(position.getX()+1 < 10)
-			position.setX(position.getX() + 1); //LEFT
+				position.setX(position.getX() + 1); //LEFT
 			break;
 		default:
 			if(position.getY()-1 > -1)
-			position.setY(position.getY() - 1); //RIGHT
+				position.setY(position.getY() - 1); //RIGHT
 			break;
 		}
 	}
