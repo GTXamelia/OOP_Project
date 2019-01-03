@@ -24,6 +24,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private static final int TILE_WIDTH = 128;
 	private static final int TILE_HEIGHT = 64;
 	private Sprite player;
+	private JLabel infoLabel;
 
 	//Do we really need two models like this?
 	private int[][] matrix;
@@ -36,10 +37,11 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private Timer timer; //Controls the repaint interval.
 	private boolean isIsometric = true; //Toggle between 2D and Isometric (Z key)
 	
-	public GameView(int[][] matrix, int[][] things) throws Exception {
+	public GameView(int[][] matrix, int[][] things, JLabel infoLabel) throws Exception {
 		init();
 		this.matrix = matrix;
 		this.things = things;
+		this.infoLabel = infoLabel;
 		
 		setBackground(Color.WHITE);
 		setDoubleBuffered(true); //Each image is buffered twice to avoid tearing / stutter
@@ -148,7 +150,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		} else if (e.getKeyCode() == KeyEvent.VK_Z) {
 			toggleView();
 		} else if (e.getKeyCode() == KeyEvent.VK_X) {
-			player.move();
+			player.move(infoLabel);
 		} else if (e.getKeyCode() == KeyEvent.VK_0) {
 			System.out.println("Direction: " + player.getDirection());
 			System.out.println("x: " + player.getPosition().getX());

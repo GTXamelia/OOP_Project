@@ -36,6 +36,7 @@ public class GameWindow {
 	
 	private JFrame frame;
 	private JPanel panel;
+	private JLabel infoLabel;
 
 	/**
 	 * Launch the application.
@@ -55,22 +56,26 @@ public class GameWindow {
 	
 	public GameWindow() throws Exception {
 		
-		GameView view = new GameView(model, objects);
-		Dimension d = new Dimension(GameView.DEFAULT_VIEW_SIZE, GameView.DEFAULT_VIEW_SIZE/2);
-		view.setPreferredSize(d);
-		view.setMinimumSize(d);
-		view.setMaximumSize(d);
-
 		frame = new JFrame("GMIT - B.Sc. in Computing (Software Development)");
 		Image img = new ImageIcon(this.getClass().getResource("/resources/images/menu/castle.png")).getImage();
 		frame.setIconImage(img);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
-		frame.getContentPane().add(view);
-		frame.addKeyListener(view);
 		
 		panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.SOUTH);
+		
+		infoLabel = new JLabel("Welcome to the  tutorial!");
+		panel.add(infoLabel);
+		
+		GameView view = new GameView(model, objects, infoLabel);
+		Dimension d = new Dimension(GameView.DEFAULT_VIEW_SIZE, GameView.DEFAULT_VIEW_SIZE/2);
+		view.setPreferredSize(d);
+		view.setMinimumSize(d);
+		view.setMaximumSize(d);
+		
+		frame.getContentPane().add(view);
+		frame.addKeyListener(view);
 		
 		frame.setSize(1000, 1000);
 		frame.setLocation(100, 100);
