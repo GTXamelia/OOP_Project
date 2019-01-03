@@ -18,7 +18,6 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 	private Direction direction = Direction.DOWN; //The current orientation of the sprite
 	private int index = 0; //The current image index.
 	private Point position; //The current x, y position
-	private GameWindow gameWindow;
 	
 	public Sprite(String name, Point p) {
 		super();

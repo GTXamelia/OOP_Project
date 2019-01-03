@@ -14,7 +14,7 @@ public class GameWindow {
 			{ 0, 0, 0, 1, 0, 0 , 0, 0, 0, 2},
 			{ 2, 2, 2, 2, 1, 0 , 0, 0, 0, 2},
 			{ 3, 3, 3, 3, 1, 1 , 1, 0, 0, 1},
-			{ 5, 5, 5, 5, 3, 3 , 1, 0, 0, 1},
+			{ 5, 5, 5, 5, 3, 3 , 1, 1, 1, 1},
 			{ 4, 4, 4, 5, 3, 3 , 1, 0, 0, 0},
 			{ 4, 4, 4, 4, 5, 3 , 1, 6, 6, 6},
 			{ 4, 4, 4, 4, 4, 3 , 1, 7, 7, 7}
@@ -35,7 +35,7 @@ public class GameWindow {
 	};
 	
 	private JFrame frame;
-	private JLabel infoLabel;
+	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -69,26 +69,12 @@ public class GameWindow {
 		frame.getContentPane().add(view);
 		frame.addKeyListener(view);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.SOUTH);
-		
-		infoLabel = new JLabel("New label");
-		panel.add(infoLabel);
 		
 		frame.setSize(1000, 1000);
 		frame.setLocation(100, 100);
 		frame.pack();;
-		
 		frame.setVisible(true);
 	}
-
-	public String getInfoLabel() {
-		return infoLabel.getText();
-	}
-
-	public void setInfoLabel(String text) {
-		this.infoLabel.setText(text);
-	}
-	
-	
 }
