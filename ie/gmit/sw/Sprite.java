@@ -76,25 +76,25 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 		step(direction);
 		
 		switch(direction.getOrientation()) {
-		case 1:
+		case 1: // Down
 			if(position.getY()+1 < 10 && matrix[position.getY()+1][position.getX()] != 4)
 				position.setY(position.getY() + 1); //UP
 			else
 				infoLabel.setText("All you see is proof the earth is flat....");
 			break;
-		case 2:
+		case 2: // Left
 			if(position.getX()-1 > -1 && matrix[position.getY()][position.getX()-1] != 4)
 				position.setX(position.getX() - 1); //DOWN
 			else
 				infoLabel.setText("All you see is proof the earth is flat....");
 			break;
-		case 3:
+		case 3: // Right
 			if(position.getX()+1 < 10 && matrix[position.getY()][position.getX()+1] != 4)
 				position.setX(position.getX() + 1); //LEFT
 			else
 				infoLabel.setText("All you see is proof the earth is flat....");
 			break;
-		default:
+		default: // Up
 			if(position.getY()-1 > -1 && matrix[position.getY()-1][position.getX()] != 4)
 				position.setY(position.getY() - 1); //RIGHT
 			else
