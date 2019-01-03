@@ -56,8 +56,9 @@ public class GameWindow {
 	
 	public GameWindow() throws Exception {
 		
+		final Image img = new ImageIcon(this.getClass().getResource("/resources/images/menu/castle.png")).getImage();
+		
 		frame = new JFrame("GMIT - B.Sc. in Computing (Software Development)");
-		Image img = new ImageIcon(this.getClass().getResource("/resources/images/menu/castle.png")).getImage();
 		frame.setIconImage(img);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -73,7 +74,6 @@ public class GameWindow {
 		view.setPreferredSize(d);
 		view.setMinimumSize(d);
 		view.setMaximumSize(d);
-		
 		frame.getContentPane().add(view);
 		frame.addKeyListener(view);
 		

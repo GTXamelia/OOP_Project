@@ -20,7 +20,6 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 	private Direction direction = Direction.DOWN; //The current orientation of the sprite
 	private int index = 0; //The current image index.
 	private Point position; //The current x, y position
-	private GameWindow gameWindow;
 	
 	public Sprite(String name, Point p) {
 		super();
@@ -73,30 +72,30 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
         return this.direction;
     }
 	
-	public void move(JLabel infoLabel) { //This method is suspiciously like one I've seen already....
+	public void move(JLabel infoLabel, int[][] matrix) { //This method is suspiciously like one I've seen already....
 		step(direction);
 		
 		switch(direction.getOrientation()) {
 		case 1:
-			if(position.getY()+1 < 10)
+			if(position.getY()+1 < 10 && matrix[position.getY()+1][position.getX()] != 4)
 				position.setY(position.getY() + 1); //UP
 			else
 				infoLabel.setText("All you see is proof the earth is flat....");
 			break;
 		case 2:
-			if(position.getX()-1 > -1)
+			if(position.getX()-1 > -1 && matrix[position.getY()][position.getX()-1] != 4)
 				position.setX(position.getX() - 1); //DOWN
 			else
 				infoLabel.setText("All you see is proof the earth is flat....");
 			break;
 		case 3:
-			if(position.getX()+1 < 10)
+			if(position.getX()+1 < 10 && matrix[position.getY()][position.getX()+1] != 4)
 				position.setX(position.getX() + 1); //LEFT
 			else
 				infoLabel.setText("All you see is proof the earth is flat....");
 			break;
 		default:
-			if(position.getY()-1 > -1)
+			if(position.getY()-1 > -1 && matrix[position.getY()-1][position.getX()] != 4)
 				position.setY(position.getY() - 1); //RIGHT
 			else
 				infoLabel.setText("All you see is proof the earth is flat....");
