@@ -1,18 +1,19 @@
-package ie.gmit.sw.game;
+package ie.gmit.sw.Levels;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import javax.swing.*;
-import javax.swing.Timer;
 
+import ie.gmit.sw.game.Collision;
+import ie.gmit.sw.game.Images;
 import ie.gmit.sw.misc.FindExit;
 import ie.gmit.sw.sprites.Direction;
 import ie.gmit.sw.sprites.EnemyMovement;
 import ie.gmit.sw.sprites.Point;
 import ie.gmit.sw.sprites.Sprite;
 
-public class GameView extends JPanel implements ActionListener, KeyListener { 
+public class Level1Settings extends JPanel implements ActionListener, KeyListener { 
 	private static final long serialVersionUID = 777L;
 	private static final int DEFAULT_IMAGE_INDEX = 0;
 	
@@ -20,15 +21,15 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private static final int TILE_WIDTH = 128;
 	private static final int TILE_HEIGHT = 64;
 	private Sprite player;
-	private Sprite[] enemies  = new Sprite[2];
+	private Sprite[] enemies  = new Sprite[1];
 	private JLabel infoLabel;
 	private EnemyMovement enemy1Move = new EnemyMovement();
-	private EnemyMovement enemy2Move = new EnemyMovement();
 	
 	//Do we really need two models like this?
 	private int[][] matrix;
 	private int[][] things;
 	private int[] local;
+	private JFrame frame;
 	
 	private BufferedImage[] tiles; //Note that all images, including sprites, have dimensions of 128 x 64. This make painting much simpler.
 	private BufferedImage[] objects; //Taller sprites can be created, by using two tiles (head torso, lower body and legs) and improve animations
@@ -37,12 +38,13 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private Timer timer; //Controls the repaint interval.
 	private boolean isIsometric = true; //Toggle between 2D and Isometric (Z key)
 	
-	public GameView(int[][] matrix, int[][] things, JLabel infoLabel) throws Exception {
+	public Level1Settings(int[][] matrix, int[][] things, JLabel infoLabel, JFrame frame) throws Exception {
 		init();
 		this.matrix = matrix;
 		this.things = things;
 		this.infoLabel = infoLabel;
 		this.local = FindExit.main(things);
+		this.frame = frame;
 		
 		setBackground(Color.WHITE);
 		setDoubleBuffered(true); //Each image is buffered twice to avoid tearing / stutter
@@ -54,10 +56,9 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		tiles = Images.loadImages("./resources/images/ground", tiles);
 		objects = Images.loadImages("./resources/images/objects", objects);
 		
-		player = new Sprite("Player 1", new Point(0, 0), Images.loadImages("./resources/images/sprites/default", null), Direction.DOWN);
+		player = new Sprite("Player 1", new Point(1, 1), Images.loadImages("./resources/images/sprites/default", null), Direction.DOWN);
 		
-		enemies[0] = new Sprite("Enemy 1", new Point(9, 0), Images.loadImages("./resources/images/sprites/knight", null), Direction.DOWN);
-		enemies[1] = new Sprite("Enemy 2", new Point(0, 5), Images.loadImages("./resources/images/sprites/knight", null), Direction.RIGHT);
+		enemies[0] = new Sprite("Enemy 1", new Point(1, 5), Images.loadImages("./resources/images/sprites/knight", null), Direction.RIGHT);
 	}
 
 	public void toggleView() {
@@ -116,14 +117,9 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		point = getIso(enemies[0].getPosition().getX(), enemies[0].getPosition().getY());
 		g2.drawImage(enemies[0].getImage(), point.getX(), point.getY(), null);
 		
-		point = getIso(enemies[1].getPosition().getX(), enemies[1].getPosition().getY());
-		g2.drawImage(enemies[1].getImage(), point.getX(), point.getY(), null);
+		enemy1Move.startMove(enemies[0], matrix, 5, 7);
 		
-		enemy1Move.startMove(enemies[0], matrix, 5, 5);
-		
-		enemy2Move.startMove(enemies[1], matrix, 10, 5);
-		
-		Collision.playerCollision(enemies, player, infoLabel, local);
+		Collision.playerCollision(enemies, player, infoLabel, local, frame);
 	}
 	
 	//This method breaks the SRP

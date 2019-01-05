@@ -2,7 +2,8 @@ package ie.gmit.sw.menu;
 
 import javax.swing.*;
 
-import ie.gmit.sw.game.GameWindow;
+import ie.gmit.sw.Levels.Level1Window;
+import ie.gmit.sw.Levels.TutorialWindow;
 
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -43,18 +44,56 @@ public class MainMenu extends JFrame {
 		
 		JLabel label = new JLabel(new ImageIcon(MainMenu.class.getResource("/resources/images/menu/castle.png")));
 		label.setSize(268, 258);
-		label.setLocation(79, 11);
+		label.setLocation(100, 11);
 		frame.getContentPane().add(label);
 		
-		JButton btnPlay = new JButton("Play");
-		btnPlay.addActionListener(new ActionListener() {
+		JButton btnTutorial = new JButton("Tutorial");
+		btnTutorial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-					frame.dispose();
-					GameWindow.main();	
+				TutorialWindow.main();
 			}
 		});
-		btnPlay.setBounds(171, 280, 89, 23);
-		frame.getContentPane().add(btnPlay);
+		btnTutorial.setBounds(194, 280, 89, 23);
+		frame.getContentPane().add(btnTutorial);
+		
+		JButton btnLevel1 = new JButton("Level 1");
+		btnLevel1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Level1Window.main();
+			}
+		});
+		btnLevel1.setBounds(194, 314, 89, 23);
+		frame.getContentPane().add(btnLevel1);
+		
+		JButton btnLevel2 = new JButton("Level 2");
+		btnLevel2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnLevel2.setBounds(194, 348, 89, 23);
+		frame.getContentPane().add(btnLevel2);
+		
+		JButton btnLevel3 = new JButton("Level 3");
+		btnLevel3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		btnLevel3.setBounds(194, 382, 89, 23);
+		frame.getContentPane().add(btnLevel3);
+		
+		JLabel lblGmit = new JLabel("GMIT");
+		lblGmit.setBounds(10, 461, 273, 14);
+		frame.getContentPane().add(lblGmit);
+		
+		JLabel lblBscInComputing = new JLabel("B.Sc. in Computing (Software Development)");
+		lblBscInComputing.setBounds(10, 486, 273, 14);
+		frame.getContentPane().add(lblBscInComputing);
+		
+		JLabel lblNewLabel = new JLabel("Cian Gannon G00337022");
+		lblNewLabel.setBounds(10, 511, 273, 14);
+		frame.getContentPane().add(lblNewLabel);
 	}
 	
 	// Closes the frame

@@ -1,9 +1,9 @@
-package ie.gmit.sw.game;
+package ie.gmit.sw.Levels;
 
 import java.awt.*;
 import javax.swing.*;
 
-public class GameWindow extends JFrame {
+public class Level1Window extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -12,27 +12,27 @@ public class GameWindow extends JFrame {
 	 * image in the images/ground/ directory.
 	 */
 	private int[][] model = { 
-			{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-			{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 2},
-			{ 0, 0, 2, 0, 0, 0, 0, 0, 0, 2},
-			{ 0, 0, 0, 1, 0, 0, 0, 0, 0, 2},
-			{ 2, 2, 2, 2, 1, 0, 0, 0, 0, 2},
-			{ 3, 3, 3, 3, 1, 1, 1, 0, 0, 1},
-			{ 5, 5, 5, 5, 3, 3, 1, 1, 1, 1},
-			{ 4, 4, 4, 5, 3, 3, 1, 0, 0, 0},
-			{ 4, 4, 4, 4, 5, 3, 1, 6, 6, 6},
-			{ 4, 4, 4, 4, 4, 3, 1, 7, 7, 7}
+			{4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
+			{4, 1, 4, 4, 4, 4, 4, 4, 4, 4},
+			{4, 1, 4, 4, 4, 4, 4, 4, 4, 4},
+			{4, 1, 4, 1, 4, 1, 4, 1, 4, 4},
+			{4, 1, 4, 1, 4, 1, 4, 1, 4, 4},
+			{4, 1, 1, 1, 1, 1, 1, 1, 1, 4},
+			{4, 4, 4, 1, 4, 1, 4, 1, 4, 4},
+			{4, 4, 4, 1, 4, 1, 4, 1, 4, 4},
+			{4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
+			{4, 4, 4, 4, 4, 4, 4, 4, 4, 4}
 	};
 	
 	//This matrix is a representation of where objects (things) in the game are placed
 	private int[][] objects = { 
-			{0, 0, 0, 5, 5, 5, 5, 5, 5, 0},
-			{5, 0, 0, 0, 5, 5, 5, 5, 5, 0},
-			{5, 5, 0, 0, 0, 5, 5, 5, 5, 9},
-			{5, 5, 2, 0, 0, 0, 5, 5, 5, 0},
-			{0, 0, 0, 0, 0, 0, 0, 5, 5, 0},
-			{0, 0, 0, 0, 0, 0, 0, 0, 5, 0},
-			{0, 0, 0, 0, 0, 3, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 9, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -49,7 +49,7 @@ public class GameWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameWindow window = new GameWindow();
+					Level1Window window = new Level1Window();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +58,7 @@ public class GameWindow extends JFrame {
 		});
 	}
 	
-	public GameWindow() throws Exception {
+	public Level1Window() throws Exception {
 		
 		final Image img = new ImageIcon(this.getClass().getResource("/resources/images/menu/castle.png")).getImage();
 		
@@ -70,11 +70,11 @@ public class GameWindow extends JFrame {
 		panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.SOUTH);
 		
-		infoLabel = new JLabel("Welcome to the  tutorial!");
+		infoLabel = new JLabel("Get to the end without hitting the knight");
 		panel.add(infoLabel);
 		
-		GameView view = new GameView(model, objects, infoLabel);
-		Dimension d = new Dimension(GameView.DEFAULT_VIEW_SIZE, GameView.DEFAULT_VIEW_SIZE/2);
+		Level1Settings view = new Level1Settings(model, objects, infoLabel, frame);
+		Dimension d = new Dimension(Level1Settings.DEFAULT_VIEW_SIZE, Level1Settings.DEFAULT_VIEW_SIZE/2);
 		view.setPreferredSize(d);
 		view.setMinimumSize(d);
 		view.setMaximumSize(d);
@@ -87,8 +87,8 @@ public class GameWindow extends JFrame {
 		frame.setVisible(true);
 	}
 	
-		// Closes the frame
-		public void CloseFrame() {
-			super.dispose();
-		}
+	// Closes the frame
+	public void CloseFrame() {
+		super.dispose();
+	}
 }
