@@ -1,7 +1,6 @@
 package ie.gmit.sw.game;
 
 import javax.swing.JLabel;
-
 import ie.gmit.sw.sprites.Sprite;
 
 public class Collision {

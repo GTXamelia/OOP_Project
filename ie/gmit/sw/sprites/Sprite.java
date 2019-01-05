@@ -83,7 +83,7 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 		
 		switch(direction.getOrientation()) {
 		case 1: // Down
-			if(position.getY()+1 < 10 && matrix[position.getY()+1][position.getX()] != 4)
+			if(position.getY()+1 < matrix.length && matrix[position.getY()+1][position.getX()] != 4)
 				position.setY(position.getY() + 1); //UP
 			else
 				try{
@@ -103,7 +103,7 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 				}
 			break;
 		case 3: // Right
-			if(position.getX()+1 < 10 && matrix[position.getY()][position.getX()+1] != 4)
+			if(position.getX()+1 < matrix.length && matrix[position.getY()][position.getX()+1] != 4)
 				position.setX(position.getX() + 1); //LEFT
 			else
 				try{
