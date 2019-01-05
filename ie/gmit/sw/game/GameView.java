@@ -31,7 +31,8 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private Sprite player;
 	private Sprite enemy;
 	private JLabel infoLabel;
-	private int timeEnemy;
+	private int enemyTimer;
+	private int enemyDirection;
 
 	//Do we really need two models like this?
 	private int[][] matrix;
@@ -57,7 +58,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	}
 	
 	private void init() throws Exception {
-		timeEnemy = 0;
+		enemyTimer = 0;
 		tiles = loadImages("./resources/images/ground", tiles);
 		objects = loadImages("./resources/images/objects", objects);
 		
@@ -143,13 +144,23 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	}
 	
 	private void startMove() throws InterruptedException{
-		timeEnemy++;
+		enemyTimer++;
+		enemyDirection++;
 		
-		if(timeEnemy == 10){
+		if(enemyTimer == 10){
 			enemy.move(infoLabel, matrix);
-			timeEnemy = 0;
-		}else{
-			System.out.println(timeEnemy);
+			enemyTimer = 0;
+		}
+		
+		if(enemyDirection == 100){
+			
+			if(enemy.getDirection() == Direction.UP){
+				enemy.setDirection(Direction.DOWN);
+			}else if(enemy.getDirection() == Direction.DOWN){
+				enemy.setDirection(Direction.UP);
+			}
+			
+			enemyDirection = 0;
 		}
 		
 	}
