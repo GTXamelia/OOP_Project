@@ -49,6 +49,11 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 	public Point getPosition() {
 		return position;
 	}
+	
+	public void setPosition(int x, int y) {
+		position.setX(x);
+		position.setY(y);
+	}
 
 	public BufferedImage getImage() {
 		return images[direction.getOrientation()][index];

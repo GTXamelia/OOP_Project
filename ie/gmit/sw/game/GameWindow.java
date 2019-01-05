@@ -85,6 +85,8 @@ public class GameWindow extends JFrame {
 		frame.setLocation(100, 100);
 		frame.pack();;
 		frame.setVisible(true);
+		
+		System.out.println(GameView.test);
 	}
 	
 		// Closes the frame

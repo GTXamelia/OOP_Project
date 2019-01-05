@@ -11,21 +11,10 @@ import ie.gmit.sw.sprites.EnemyMovement;
 import ie.gmit.sw.sprites.Point;
 import ie.gmit.sw.sprites.Sprite;
 
-import javax.imageio.*;
-import java.io.*;
-import java.util.*;
-
-/*
- * This is a God class and is doing way too much. The instance variables cover everything from isometric to 
- * Cartesian drawing and the class has methods for loading images and converting from one coordinate space to
- * another.
- * 
- */
 public class GameView extends JPanel implements ActionListener, KeyListener { 
 	private static final long serialVersionUID = 777L;
 	private static final int DEFAULT_IMAGE_INDEX = 0;
 	
-	//Encapsulate the things that vary...
 	public static final int DEFAULT_VIEW_SIZE = 1280;
 	private static final int TILE_WIDTH = 128;
 	private static final int TILE_HEIGHT = 64;
@@ -34,6 +23,8 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private JLabel infoLabel;
 	private EnemyMovement enemy1Move = new EnemyMovement();
 	private EnemyMovement enemy2Move = new EnemyMovement();
+	
+	public static String test = "test";
 	
 
 	//Do we really need two models like this?
@@ -60,26 +51,13 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	}
 	
 	private void init() throws Exception {
-		tiles = loadImages("./resources/images/ground", tiles);
-		objects = loadImages("./resources/images/objects", objects);
+		tiles = Images.loadImages("./resources/images/ground", tiles);
+		objects = Images.loadImages("./resources/images/objects", objects);
 		
-		player = new Sprite("Player 1", new Point(0, 0), loadImages("./resources/images/sprites/default", null), Direction.DOWN);
+		player = new Sprite("Player 1", new Point(0, 0), Images.loadImages("./resources/images/sprites/default", null), Direction.DOWN);
 		
-		enemies[0] = new Sprite("Enemy 1", new Point(9, 0), loadImages("./resources/images/sprites/knight", null), Direction.DOWN);
-		enemies[1] = new Sprite("Enemy 2", new Point(0, 5), loadImages("./resources/images/sprites/knight", null), Direction.RIGHT);
-	}
-	
-	//This method breaks the SRP
-	private BufferedImage[] loadImages(String directory, BufferedImage[] img) throws Exception {
-		File dir = new File(directory);
-		File[] files = dir.listFiles();
-		Arrays.sort(files, (s, t) -> s.getName().compareTo(t.getName()));
-		
-		img = new BufferedImage[files.length];
-		for (int i = 0; i < files.length; i++) {
-			img[i] = ImageIO.read(files[i]);
-		}
-		return img;
+		enemies[0] = new Sprite("Enemy 1", new Point(9, 0), Images.loadImages("./resources/images/sprites/knight", null), Direction.DOWN);
+		enemies[1] = new Sprite("Enemy 2", new Point(0, 5), Images.loadImages("./resources/images/sprites/knight", null), Direction.RIGHT);
 	}
 
 	public void toggleView() {
@@ -145,7 +123,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		
 		enemy2Move.startMove(enemies[1], matrix, 10, 5);
 		
-		endGame(enemies, player);
+		Collision.playerCollision(enemies, player, infoLabel);
 	}
 	
 	//This method breaks the SRP
@@ -192,16 +170,4 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	
 	public void keyTyped(KeyEvent e) {
 	} // Ignore
-	
-	public static void endGame(Sprite[] enemies, Sprite player) {
-		
-		for (int i = 0; i < enemies.length; i++){
-			
-			if(enemies[i].getPosition().getX() == player.getPosition().getX() && enemies[i].getPosition().getY() == player.getPosition().getY()){
-				System.out.println("Dead");
-			}
-			
-		}
-		
-	}
 }
