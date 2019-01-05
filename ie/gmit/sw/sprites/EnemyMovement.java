@@ -22,6 +22,14 @@ public class EnemyMovement {
 			enemy.setDirection(Direction.DOWN);
 			enemyDirectionTimer = 0;
 		}
+		else if(enemy.getDirection() == Direction.RIGHT && enemyDirectionTimer == tiles){
+			enemy.setDirection(Direction.LEFT);
+			enemyDirectionTimer = 0;
+		}
+		else if(enemy.getDirection() == Direction.LEFT && enemyDirectionTimer == tiles){
+			enemy.setDirection(Direction.RIGHT);
+			enemyDirectionTimer = 0;
+		}
 		
 		
 	}

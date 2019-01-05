@@ -66,6 +66,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		
 		enemy1 = new Sprite("Enemy 1", new Point(9, 0), loadImages("./resources/images/sprites/knight", null));
 		enemy2 = new Sprite("Enemy 2", new Point(0, 5), loadImages("./resources/images/sprites/knight", null));
+		enemy2.setDirection(Direction.RIGHT);
 	}
 	
 	//This method breaks the SRP
@@ -139,7 +140,6 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		
 		point = getIso(enemy2.getPosition().getX(), enemy2.getPosition().getY());
 		g2.drawImage(enemy2.getImage(), point.getX(), point.getY(), null);
-		enemy2.setDirection(Direction.RIGHT);
 		
 		EnemyMovement enemy1Move = new EnemyMovement();
 		enemy1Move.startMove(enemy1, matrix, 5, 5);
