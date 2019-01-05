@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class Message {
 
-	private JLabel infoLabel = new JLabel("Test");
+	private JLabel infoLabel = new JLabel("");
 
 	public synchronized JLabel getInfoLabel() {
 		return this.infoLabel;

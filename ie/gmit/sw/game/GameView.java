@@ -144,6 +144,8 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		enemy1Move.startMove(enemies[0], matrix, 5, 5);
 		
 		enemy2Move.startMove(enemies[1], matrix, 10, 5);
+		
+		endGame(enemies, player);
 	}
 	
 	//This method breaks the SRP
@@ -190,4 +192,16 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	
 	public void keyTyped(KeyEvent e) {
 	} // Ignore
+	
+	public static void endGame(Sprite[] enemies, Sprite player) {
+		
+		for (int i = 0; i < enemies.length; i++){
+			
+			if(enemies[i].getPosition().getX() == player.getPosition().getX() && enemies[i].getPosition().getY() == player.getPosition().getY()){
+				System.out.println("Dead");
+			}
+			
+		}
+		
+	}
 }
