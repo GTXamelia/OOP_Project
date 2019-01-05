@@ -30,8 +30,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private static final int TILE_WIDTH = 128;
 	private static final int TILE_HEIGHT = 64;
 	private Sprite player;
-	private Sprite enemy1;
-	private Sprite enemy2;
+	private Sprite[] enemies  = new Sprite[2];
 	private JLabel infoLabel;
 	private EnemyMovement enemy1Move = new EnemyMovement();
 	private EnemyMovement enemy2Move = new EnemyMovement();
@@ -66,8 +65,8 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		
 		player = new Sprite("Player 1", new Point(0, 0), loadImages("./resources/images/sprites/default", null), Direction.DOWN);
 		
-		enemy1 = new Sprite("Enemy 1", new Point(9, 0), loadImages("./resources/images/sprites/knight", null), Direction.DOWN);
-		enemy2 = new Sprite("Enemy 2", new Point(0, 5), loadImages("./resources/images/sprites/knight", null), Direction.RIGHT);
+		enemies[0] = new Sprite("Enemy 1", new Point(9, 0), loadImages("./resources/images/sprites/knight", null), Direction.DOWN);
+		enemies[1] = new Sprite("Enemy 2", new Point(0, 5), loadImages("./resources/images/sprites/knight", null), Direction.RIGHT);
 	}
 	
 	//This method breaks the SRP
@@ -136,15 +135,15 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		point = getIso(player.getPosition().getX(), player.getPosition().getY());
 		g2.drawImage(player.getImage(), point.getX(), point.getY(), null);
 		
-		point = getIso(enemy1.getPosition().getX(), enemy1.getPosition().getY());
-		g2.drawImage(enemy1.getImage(), point.getX(), point.getY(), null);
+		point = getIso(enemies[0].getPosition().getX(), enemies[0].getPosition().getY());
+		g2.drawImage(enemies[0].getImage(), point.getX(), point.getY(), null);
 		
-		point = getIso(enemy2.getPosition().getX(), enemy2.getPosition().getY());
-		g2.drawImage(enemy2.getImage(), point.getX(), point.getY(), null);
+		point = getIso(enemies[1].getPosition().getX(), enemies[1].getPosition().getY());
+		g2.drawImage(enemies[1].getImage(), point.getX(), point.getY(), null);
 		
-		enemy1Move.startMove(enemy1, matrix, 5, 5);
+		enemy1Move.startMove(enemies[0], matrix, 5, 5);
 		
-		enemy2Move.startMove(enemy2, matrix, 10, 5);
+		enemy2Move.startMove(enemies[1], matrix, 10, 5);
 	}
 	
 	//This method breaks the SRP
