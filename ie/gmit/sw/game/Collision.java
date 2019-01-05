@@ -6,7 +6,7 @@ import ie.gmit.sw.sprites.Sprite;
 
 public class Collision {
 
-	public static void playerCollision(Sprite[] enemies, Sprite player, JLabel infoLabel) {
+	public static void playerCollision(Sprite[] enemies, Sprite player, JLabel infoLabel, int[] local) {
 
 		for (int i = 0; i < enemies.length; i++) {
 
@@ -17,9 +17,11 @@ public class Collision {
 
 		}
 		
-		if (player.getPosition().getX() == 9 && player.getPosition().getY() == 2) {
-			System.out.println("Test");
-		}
+		for(int i = 0; i < local.length; i++) {
+            if(player.getPosition().getX() == local[0] && player.getPosition().getY() == local[1]){
+            	infoLabel.setText("Done");
+            }
+	    }
+		
 	}
-
 }

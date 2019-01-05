@@ -6,6 +6,7 @@ import java.awt.image.*;
 import javax.swing.*;
 import javax.swing.Timer;
 
+import ie.gmit.sw.misc.FindExit;
 import ie.gmit.sw.sprites.Direction;
 import ie.gmit.sw.sprites.EnemyMovement;
 import ie.gmit.sw.sprites.Point;
@@ -27,6 +28,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	//Do we really need two models like this?
 	private int[][] matrix;
 	private int[][] things;
+	private int[] local;
 	
 	private BufferedImage[] tiles; //Note that all images, including sprites, have dimensions of 128 x 64. This make painting much simpler.
 	private BufferedImage[] objects; //Taller sprites can be created, by using two tiles (head torso, lower body and legs) and improve animations
@@ -40,6 +42,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		this.matrix = matrix;
 		this.things = things;
 		this.infoLabel = infoLabel;
+		this.local = FindExit.main(things);
 		
 		setBackground(Color.WHITE);
 		setDoubleBuffered(true); //Each image is buffered twice to avoid tearing / stutter
@@ -120,7 +123,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		
 		enemy2Move.startMove(enemies[1], matrix, 10, 5);
 		
-		Collision.playerCollision(enemies, player, infoLabel);
+		Collision.playerCollision(enemies, player, infoLabel, local);
 	}
 	
 	//This method breaks the SRP
