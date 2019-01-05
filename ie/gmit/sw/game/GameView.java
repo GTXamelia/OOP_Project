@@ -6,7 +6,6 @@ import java.awt.image.*;
 import javax.swing.*;
 import javax.swing.Timer;
 
-import ie.gmit.sw.menu.MainMenu;
 import ie.gmit.sw.sprites.Direction;
 import ie.gmit.sw.sprites.Point;
 import ie.gmit.sw.sprites.Sprite;
@@ -32,6 +31,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private Sprite player;
 	private Sprite enemy;
 	private JLabel infoLabel;
+	private int timeEnemy;
 
 	//Do we really need two models like this?
 	private int[][] matrix;
@@ -57,6 +57,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	}
 	
 	private void init() throws Exception {
+		timeEnemy = 0;
 		tiles = loadImages("./resources/images/ground", tiles);
 		objects = loadImages("./resources/images/objects", objects);
 		
@@ -134,19 +135,23 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		point = getIso(enemy.getPosition().getX(), enemy.getPosition().getY());
 		g2.drawImage(enemy.getImage(), point.getX(), point.getY(), null);
 		
-		startMove();
+		try {
+			startMove();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	private void startMove(){
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					System.out.println("Test");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	private void startMove() throws InterruptedException{
+		timeEnemy++;
+		
+		if(timeEnemy == 10){
+			enemy.move(infoLabel, matrix);
+			timeEnemy = 0;
+		}else{
+			System.out.println(timeEnemy);
+		}
+		
 	}
 	
 	//This method breaks the SRP
