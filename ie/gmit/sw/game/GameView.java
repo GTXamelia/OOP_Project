@@ -24,9 +24,6 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private EnemyMovement enemy1Move = new EnemyMovement();
 	private EnemyMovement enemy2Move = new EnemyMovement();
 	
-	public static String test = "test";
-	
-
 	//Do we really need two models like this?
 	private int[][] matrix;
 	private int[][] things;

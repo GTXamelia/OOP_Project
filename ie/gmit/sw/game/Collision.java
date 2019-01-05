@@ -16,6 +16,10 @@ public class Collision {
 			}
 
 		}
+		
+		if (player.getPosition().getX() == 9 && player.getPosition().getY() == 2) {
+			System.out.println("Test");
+		}
 	}
 
 }
