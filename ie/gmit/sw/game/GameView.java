@@ -62,11 +62,10 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		tiles = loadImages("./resources/images/ground", tiles);
 		objects = loadImages("./resources/images/objects", objects);
 		
-		player = new Sprite("Player 1", new Point(0, 0), loadImages("./resources/images/sprites/default", null));
+		player = new Sprite("Player 1", new Point(0, 0), loadImages("./resources/images/sprites/default", null), Direction.DOWN);
 		
-		enemy1 = new Sprite("Enemy 1", new Point(9, 0), loadImages("./resources/images/sprites/knight", null));
-		enemy2 = new Sprite("Enemy 2", new Point(0, 5), loadImages("./resources/images/sprites/knight", null));
-		enemy2.setDirection(Direction.RIGHT);
+		enemy1 = new Sprite("Enemy 1", new Point(9, 0), loadImages("./resources/images/sprites/knight", null), Direction.DOWN);
+		enemy2 = new Sprite("Enemy 2", new Point(0, 5), loadImages("./resources/images/sprites/knight", null), Direction.RIGHT);
 	}
 	
 	//This method breaks the SRP
