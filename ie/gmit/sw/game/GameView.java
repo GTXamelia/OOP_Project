@@ -6,6 +6,7 @@ import java.awt.image.*;
 import javax.swing.*;
 import javax.swing.Timer;
 
+import ie.gmit.sw.menu.MainMenu;
 import ie.gmit.sw.sprites.Direction;
 import ie.gmit.sw.sprites.Point;
 import ie.gmit.sw.sprites.Sprite;
@@ -132,6 +133,20 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		
 		point = getIso(enemy.getPosition().getX(), enemy.getPosition().getY());
 		g2.drawImage(enemy.getImage(), point.getX(), point.getY(), null);
+		
+		startMove();
+	}
+	
+	private void startMove(){
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					System.out.println("Test");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 	
 	//This method breaks the SRP
