@@ -33,6 +33,8 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private Sprite enemy1;
 	private Sprite enemy2;
 	private JLabel infoLabel;
+	private EnemyMovement enemy1Move = new EnemyMovement();
+	private EnemyMovement enemy2Move = new EnemyMovement();
 	
 
 	//Do we really need two models like this?
@@ -140,11 +142,9 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		point = getIso(enemy2.getPosition().getX(), enemy2.getPosition().getY());
 		g2.drawImage(enemy2.getImage(), point.getX(), point.getY(), null);
 		
-		EnemyMovement enemy1Move = new EnemyMovement();
 		enemy1Move.startMove(enemy1, matrix, 5, 5);
 		
-		EnemyMovement enemy2Move = new EnemyMovement();
-		enemy2Move.startMove(enemy2, matrix, 5, 5);
+		enemy2Move.startMove(enemy2, matrix, 10, 5);
 	}
 	
 	//This method breaks the SRP

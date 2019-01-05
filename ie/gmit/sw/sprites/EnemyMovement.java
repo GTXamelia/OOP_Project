@@ -2,36 +2,35 @@ package ie.gmit.sw.sprites;
 
 public class EnemyMovement {
 	
-	private static int enemyTimer;
-	private static int enemyDirectionTimer;
-	
+	private int enemyTimer = 0;
+	private int enemyDirectionTimer = 1;
+
 	public void startMove(Sprite enemy, int[][] matrix, int speed, int tiles) {
-		enemyTimer++;
+		this.enemyTimer++;
 		
 		if(enemyTimer == speed){
 			enemy.move(null, matrix);
-			enemyTimer = 0;
-			enemyDirectionTimer++;
+			this.enemyTimer = 0;
+			this.enemyDirectionTimer++;
 		}
 		
-		if(enemy.getDirection() == Direction.DOWN && enemyDirectionTimer == tiles){
+		if(enemy.getDirection() == Direction.DOWN && this.enemyDirectionTimer == tiles){
 			enemy.setDirection(Direction.UP);
-			enemyDirectionTimer = 0;
+			this.enemyDirectionTimer = 1;
 		}
-		else if(enemy.getDirection() == Direction.UP && enemyDirectionTimer == tiles){
+		else if(enemy.getDirection() == Direction.UP && this.enemyDirectionTimer == tiles){
 			enemy.setDirection(Direction.DOWN);
-			enemyDirectionTimer = 0;
+			this.enemyDirectionTimer = 1;
 		}
-		else if(enemy.getDirection() == Direction.RIGHT && enemyDirectionTimer == tiles){
+		else if(enemy.getDirection() == Direction.RIGHT && this.enemyDirectionTimer == tiles){
 			enemy.setDirection(Direction.LEFT);
-			enemyDirectionTimer = 0;
+			this.enemyDirectionTimer = 1;
 		}
-		else if(enemy.getDirection() == Direction.LEFT && enemyDirectionTimer == tiles){
+		else if(enemy.getDirection() == Direction.LEFT && this.enemyDirectionTimer == tiles){
 			enemy.setDirection(Direction.RIGHT);
-			enemyDirectionTimer = 0;
+			this.enemyDirectionTimer = 1;
 		}
-		
 		
 	}
-
+	
 }
