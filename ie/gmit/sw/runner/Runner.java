@@ -1,4 +1,6 @@
-package ie.gmit.sw;
+package ie.gmit.sw.runner;
+
+import ie.gmit.sw.menu.MainMenu;
 
 public class Runner {
 	public static void main(String[] args) throws Exception {

@@ -1,10 +1,15 @@
-package ie.gmit.sw;
+package ie.gmit.sw.game;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 import javax.swing.*;
 import javax.swing.Timer;
+
+import ie.gmit.sw.sprites.Direction;
+import ie.gmit.sw.sprites.Point;
+import ie.gmit.sw.sprites.Sprite;
+
 import javax.imageio.*;
 import java.io.*;
 import java.util.*;
@@ -24,6 +29,7 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private static final int TILE_WIDTH = 128;
 	private static final int TILE_HEIGHT = 64;
 	private Sprite player;
+	private Sprite enemy;
 	private JLabel infoLabel;
 
 	//Do we really need two models like this?
@@ -52,7 +58,10 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private void init() throws Exception {
 		tiles = loadImages("./resources/images/ground", tiles);
 		objects = loadImages("./resources/images/objects", objects);
+		
 		player = new Sprite("Player 1", new Point(0, 0), loadImages("./resources/images/sprites/default", null));
+		
+		enemy = new Sprite("Enemy 1", new Point(9, 0), loadImages("./resources/images/sprites/knight", null));
 	}
 	
 	//This method breaks the SRP
@@ -120,6 +129,9 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		//Paint the player on  the ground
 		point = getIso(player.getPosition().getX(), player.getPosition().getY());
 		g2.drawImage(player.getImage(), point.getX(), point.getY(), null);
+		
+		point = getIso(enemy.getPosition().getX(), enemy.getPosition().getY());
+		g2.drawImage(enemy.getImage(), point.getX(), point.getY(), null);
 	}
 	
 	//This method breaks the SRP

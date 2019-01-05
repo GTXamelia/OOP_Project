@@ -1,6 +1,9 @@
-package ie.gmit.sw;
+package ie.gmit.sw.menu;
 
 import javax.swing.*;
+
+import ie.gmit.sw.game.GameWindow;
+
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionListener;
@@ -54,7 +57,7 @@ public class MainMenu extends JFrame {
 		frame.getContentPane().add(btnPlay);
 	}
 	
-	// A function which closes the frame
+	// Closes the frame
 	public void CloseFrame() {
 		super.dispose();
 	}
