@@ -72,7 +72,7 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
         return this.direction;
     }
 	
-	public void move(JLabel infoLabel, int[][] matrix) { //This method is suspiciously like one I've seen already....
+	public void move(JLabel infoLabel, int[][] matrix)  { //This method is suspiciously like one I've seen already....
 		step(direction);
 		
 		switch(direction.getOrientation()) {
@@ -80,25 +80,41 @@ public class Sprite { //Sprite belongs in some sort of hierarchy....
 			if(position.getY()+1 < 10 && matrix[position.getY()+1][position.getX()] != 4)
 				position.setY(position.getY() + 1); //UP
 			else
-				infoLabel.setText("You can go no further");
+				try{
+					infoLabel.setText("You can go no further");
+				}catch (NullPointerException e){
+					
+				}
 			break;
 		case 2: // Left
 			if(position.getX()-1 > -1 && matrix[position.getY()][position.getX()-1] != 4)
 				position.setX(position.getX() - 1); //DOWN
 			else
-				infoLabel.setText("You can go no further");
+				try{
+					infoLabel.setText("You can go no further");
+				}catch (NullPointerException e){
+					
+				}
 			break;
 		case 3: // Right
 			if(position.getX()+1 < 10 && matrix[position.getY()][position.getX()+1] != 4)
 				position.setX(position.getX() + 1); //LEFT
 			else
-				infoLabel.setText("You can go no further");
+				try{
+					infoLabel.setText("You can go no further");
+				}catch (NullPointerException e){
+					
+				}
 			break;
 		default: // Up
 			if(position.getY()-1 > -1 && matrix[position.getY()-1][position.getX()] != 4)
 				position.setY(position.getY() - 1); //RIGHT
 			else
-				infoLabel.setText("You can go no further");
+				try{
+					infoLabel.setText("You can go no further");
+				}catch (NullPointerException e){
+					
+				}
 			break;
 		}
 	}

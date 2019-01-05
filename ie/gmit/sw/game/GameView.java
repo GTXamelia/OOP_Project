@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.Timer;
 
 import ie.gmit.sw.sprites.Direction;
+import ie.gmit.sw.sprites.EnemyMovement;
 import ie.gmit.sw.sprites.Point;
 import ie.gmit.sw.sprites.Sprite;
 
@@ -29,10 +30,10 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	private static final int TILE_WIDTH = 128;
 	private static final int TILE_HEIGHT = 64;
 	private Sprite player;
-	private Sprite enemy;
+	private Sprite enemy1;
+	private Sprite enemy2;
 	private JLabel infoLabel;
-	private int enemyTimer;
-	private int enemyDirection;
+	
 
 	//Do we really need two models like this?
 	private int[][] matrix;
@@ -58,13 +59,13 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 	}
 	
 	private void init() throws Exception {
-		enemyTimer = 0;
 		tiles = loadImages("./resources/images/ground", tiles);
 		objects = loadImages("./resources/images/objects", objects);
 		
 		player = new Sprite("Player 1", new Point(0, 0), loadImages("./resources/images/sprites/default", null));
 		
-		enemy = new Sprite("Enemy 1", new Point(9, 0), loadImages("./resources/images/sprites/knight", null));
+		enemy1 = new Sprite("Enemy 1", new Point(9, 0), loadImages("./resources/images/sprites/knight", null));
+		enemy2 = new Sprite("Enemy 2", new Point(0, 5), loadImages("./resources/images/sprites/knight", null));
 	}
 	
 	//This method breaks the SRP
@@ -133,36 +134,18 @@ public class GameView extends JPanel implements ActionListener, KeyListener {
 		point = getIso(player.getPosition().getX(), player.getPosition().getY());
 		g2.drawImage(player.getImage(), point.getX(), point.getY(), null);
 		
-		point = getIso(enemy.getPosition().getX(), enemy.getPosition().getY());
-		g2.drawImage(enemy.getImage(), point.getX(), point.getY(), null);
+		point = getIso(enemy1.getPosition().getX(), enemy1.getPosition().getY());
+		g2.drawImage(enemy1.getImage(), point.getX(), point.getY(), null);
 		
-		try {
-			startMove();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	private void startMove() throws InterruptedException{
-		enemyTimer++;
-		enemyDirection++;
+		point = getIso(enemy2.getPosition().getX(), enemy2.getPosition().getY());
+		g2.drawImage(enemy2.getImage(), point.getX(), point.getY(), null);
+		enemy2.setDirection(Direction.RIGHT);
 		
-		if(enemyTimer == 10){
-			enemy.move(infoLabel, matrix);
-			enemyTimer = 0;
-		}
+		EnemyMovement enemy1Move = new EnemyMovement();
+		enemy1Move.startMove(enemy1, matrix, 5, 5);
 		
-		if(enemyDirection == 100){
-			
-			if(enemy.getDirection() == Direction.UP){
-				enemy.setDirection(Direction.DOWN);
-			}else if(enemy.getDirection() == Direction.DOWN){
-				enemy.setDirection(Direction.UP);
-			}
-			
-			enemyDirection = 0;
-		}
-		
+		EnemyMovement enemy2Move = new EnemyMovement();
+		enemy2Move.startMove(enemy2, matrix, 5, 5);
 	}
 	
 	//This method breaks the SRP
