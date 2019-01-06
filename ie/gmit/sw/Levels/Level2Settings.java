@@ -21,9 +21,12 @@ public class Level2Settings extends JPanel implements ActionListener, KeyListene
 	private static final int TILE_WIDTH = 128;
 	private static final int TILE_HEIGHT = 64;
 	private Sprite player;
-	private Sprite[] enemies  = new Sprite[1];
+	private Sprite[] enemies  = new Sprite[4];
 	private JLabel infoLabel;
 	private EnemyMovement enemy1Move = new EnemyMovement();
+	private EnemyMovement enemy2Move = new EnemyMovement();
+	private EnemyMovement enemy3Move = new EnemyMovement();
+	private EnemyMovement enemy4Move = new EnemyMovement();
 	
 	private int[][] matrix;
 	private int[][] things;
@@ -55,9 +58,12 @@ public class Level2Settings extends JPanel implements ActionListener, KeyListene
 		tiles = Images.loadImages("./resources/images/ground", tiles);
 		objects = Images.loadImages("./resources/images/objects", objects);
 		
-		player = new Sprite("Player 1", new Point(1, 1), Images.loadImages("./resources/images/sprites/default", null), Direction.DOWN);
+		player = new Sprite("Player 1", new Point(1, 0), Images.loadImages("./resources/images/sprites/default", null), Direction.LEFT);
 		
-		enemies[0] = new Sprite("Enemy 1", new Point(1, 5), Images.loadImages("./resources/images/sprites/knight", null), Direction.RIGHT);
+		enemies[0] = new Sprite("Enemy 1", new Point(0, 7), Images.loadImages("./resources/images/sprites/knight", null), Direction.UP);
+		enemies[1] = new Sprite("Enemy 2", new Point(1, 8), Images.loadImages("./resources/images/sprites/knight", null), Direction.RIGHT);
+		enemies[2] = new Sprite("Enemy 3", new Point(8, 2), Images.loadImages("./resources/images/sprites/knight", null), Direction.DOWN);
+		enemies[3] = new Sprite("Enemy 4", new Point(7, 3), Images.loadImages("./resources/images/sprites/knight", null), Direction.LEFT);
 	}
 
 	public void toggleView() {
@@ -116,7 +122,19 @@ public class Level2Settings extends JPanel implements ActionListener, KeyListene
 		point = getIso(enemies[0].getPosition().getX(), enemies[0].getPosition().getY());
 		g2.drawImage(enemies[0].getImage(), point.getX(), point.getY(), null);
 		
-		enemy1Move.startMove(enemies[0], matrix, 5, 7);
+		point = getIso(enemies[1].getPosition().getX(), enemies[1].getPosition().getY());
+		g2.drawImage(enemies[1].getImage(), point.getX(), point.getY(), null);
+		
+		point = getIso(enemies[2].getPosition().getX(), enemies[2].getPosition().getY());
+		g2.drawImage(enemies[2].getImage(), point.getX(), point.getY(), null);
+		
+		point = getIso(enemies[3].getPosition().getX(), enemies[3].getPosition().getY());
+		g2.drawImage(enemies[3].getImage(), point.getX(), point.getY(), null);
+		
+		enemy1Move.startMove(enemies[0], matrix, 7, 7);
+		enemy2Move.startMove(enemies[1], matrix, 5, 7);
+		enemy3Move.startMove(enemies[2], matrix, 6, 6);
+		enemy4Move.startMove(enemies[3], matrix, 10, 4);
 		
 		Collision.playerCollision(enemies, player, infoLabel, local, frame, 1, 1);
 	}
