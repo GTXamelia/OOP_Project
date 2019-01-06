@@ -1,4 +1,4 @@
-package ie.gmit.sw.Levels;
+package ie.gmit.sw.Levels.Level2;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,8 +6,8 @@ import java.awt.image.*;
 import javax.swing.*;
 
 import ie.gmit.sw.game.Collision;
+import ie.gmit.sw.game.FindExit;
 import ie.gmit.sw.game.Images;
-import ie.gmit.sw.misc.FindExit;
 import ie.gmit.sw.sprites.Direction;
 import ie.gmit.sw.sprites.EnemyMovement;
 import ie.gmit.sw.sprites.Point;

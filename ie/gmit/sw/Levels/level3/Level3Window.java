@@ -1,9 +1,11 @@
-package ie.gmit.sw.Levels;
+package ie.gmit.sw.Levels.level3;
 
 import java.awt.*;
 import javax.swing.*;
 
-public class Level2Window extends JFrame {
+import ie.gmit.sw.Levels.Level1.Level1Settings;
+
+public class Level3Window extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -12,16 +14,16 @@ public class Level2Window extends JFrame {
 	 * image in the images/ground/ directory.
 	 */
 	private int[][] model = { 
-			{1, 1, 4, 4, 4, 4, 4, 4, 4, 4},
+			{4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
+			{4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
+			{4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
 			{1, 4, 4, 4, 4, 4, 4, 4, 4, 4},
-			{1, 1, 4, 4, 1, 4, 1, 4, 1, 4},
-			{1, 4, 4, 1, 1, 1, 1, 1, 1, 4},
-			{1, 1, 4, 4, 1, 4, 1, 4, 1, 1},
-			{1, 4, 4, 4, 4, 4, 4, 4, 1, 4},
-			{1, 1, 4, 4, 4, 4, 4, 1, 1, 1},
-			{1, 4, 1, 4, 1, 4, 1, 4, 1, 4},
 			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-			{4, 4, 1, 4, 1, 4, 1, 4, 1, 4}
+			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+			{4, 4, 4, 4, 4, 4, 4, 4, 4, 1},
+			{4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
+			{4, 4, 4, 4, 4, 4, 4, 4, 4, 4},
+			{4, 4, 4, 4, 4, 4, 4, 4, 4, 4}
 	};
 	
 	//This matrix is a representation of where objects (things) in the game are placed
@@ -29,10 +31,10 @@ public class Level2Window extends JFrame {
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-			{0, 0, 0, 9, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 9},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -49,7 +51,7 @@ public class Level2Window extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Level2Window window = new Level2Window();
+					Level3Window window = new Level3Window();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +60,7 @@ public class Level2Window extends JFrame {
 		});
 	}
 	
-	public Level2Window() throws Exception {
+	public Level3Window() throws Exception {
 		
 		final Image img = new ImageIcon(this.getClass().getResource("/resources/images/menu/castle.png")).getImage();
 		
@@ -73,7 +75,7 @@ public class Level2Window extends JFrame {
 		infoLabel = new JLabel("Get to the end without hitting the knight");
 		panel.add(infoLabel);
 		
-		Level2Settings view = new Level2Settings(model, objects, infoLabel, frame);
+		Level3Settings view = new Level3Settings(model, objects, infoLabel, frame);
 		Dimension d = new Dimension(Level1Settings.DEFAULT_VIEW_SIZE, Level1Settings.DEFAULT_VIEW_SIZE/2);
 		view.setPreferredSize(d);
 		view.setMinimumSize(d);

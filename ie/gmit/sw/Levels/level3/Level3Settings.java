@@ -1,4 +1,4 @@
-package ie.gmit.sw.Levels;
+package ie.gmit.sw.Levels.level3;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,14 +6,14 @@ import java.awt.image.*;
 import javax.swing.*;
 
 import ie.gmit.sw.game.Collision;
+import ie.gmit.sw.game.FindExit;
 import ie.gmit.sw.game.Images;
-import ie.gmit.sw.misc.FindExit;
 import ie.gmit.sw.sprites.Direction;
 import ie.gmit.sw.sprites.EnemyMovement;
 import ie.gmit.sw.sprites.Point;
 import ie.gmit.sw.sprites.Sprite;
 
-public class TutorialSettings extends JPanel implements ActionListener, KeyListener { 
+public class Level3Settings extends JPanel implements ActionListener, KeyListener { 
 	private static final long serialVersionUID = 777L;
 	private static final int DEFAULT_IMAGE_INDEX = 0;
 	
@@ -26,7 +26,6 @@ public class TutorialSettings extends JPanel implements ActionListener, KeyListe
 	private EnemyMovement enemy1Move = new EnemyMovement();
 	private EnemyMovement enemy2Move = new EnemyMovement();
 	
-	//Do we really need two models like this?
 	private int[][] matrix;
 	private int[][] things;
 	private int[] local;
@@ -39,7 +38,7 @@ public class TutorialSettings extends JPanel implements ActionListener, KeyListe
 	private Timer timer; //Controls the repaint interval.
 	private boolean isIsometric = true; //Toggle between 2D and Isometric (Z key)
 	
-	public TutorialSettings(int[][] matrix, int[][] things, JLabel infoLabel, JFrame frame) throws Exception {
+	public Level3Settings(int[][] matrix, int[][] things, JLabel infoLabel, JFrame frame) throws Exception {
 		init();
 		this.matrix = matrix;
 		this.things = things;
@@ -57,10 +56,10 @@ public class TutorialSettings extends JPanel implements ActionListener, KeyListe
 		tiles = Images.loadImages("./resources/images/ground", tiles);
 		objects = Images.loadImages("./resources/images/objects", objects);
 		
-		player = new Sprite("Player 1", new Point(0, 0), Images.loadImages("./resources/images/sprites/default", null), Direction.DOWN);
+		player = new Sprite("Player 1", new Point(0, 3), Images.loadImages("./resources/images/sprites/default", null), Direction.DOWN);
 		
-		enemies[0] = new Sprite("Enemy 1", new Point(9, 0), Images.loadImages("./resources/images/sprites/knight", null), Direction.DOWN);
-		enemies[1] = new Sprite("Enemy 2", new Point(0, 5), Images.loadImages("./resources/images/sprites/knight", null), Direction.RIGHT);
+		enemies[0] = new Sprite("Enemy 1", new Point(0, 4), Images.loadImages("./resources/images/sprites/knight", null), Direction.RIGHT);
+		enemies[1] = new Sprite("Enemy 2", new Point(8, 5), Images.loadImages("./resources/images/sprites/knight", null), Direction.LEFT);
 	}
 
 	public void toggleView() {
@@ -122,11 +121,10 @@ public class TutorialSettings extends JPanel implements ActionListener, KeyListe
 		point = getIso(enemies[1].getPosition().getX(), enemies[1].getPosition().getY());
 		g2.drawImage(enemies[1].getImage(), point.getX(), point.getY(), null);
 		
-		enemy1Move.startMove(enemies[0], matrix, 5, 5);
+		enemy1Move.startMove(enemies[0], matrix, 3, 9);
+		enemy2Move.startMove(enemies[1], matrix, 3, 9);
 		
-		enemy2Move.startMove(enemies[1], matrix, 10, 5);
-		
-		Collision.playerCollision(enemies, player, infoLabel, local, frame, 0, 0);
+		Collision.playerCollision(enemies, player, infoLabel, local, frame, 0, 3);
 	}
 	
 	//This method breaks the SRP

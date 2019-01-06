@@ -2,9 +2,10 @@ package ie.gmit.sw.menu;
 
 import javax.swing.*;
 
-import ie.gmit.sw.Levels.Level1Window;
-import ie.gmit.sw.Levels.Level2Window;
-import ie.gmit.sw.Levels.TutorialWindow;
+import ie.gmit.sw.Levels.Level1.Level1Window;
+import ie.gmit.sw.Levels.Level2.Level2Window;
+import ie.gmit.sw.Levels.level3.Level3Window;
+import ie.gmit.sw.Levels.tutorial.TutorialWindow;
 
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -78,7 +79,7 @@ public class MainMenu extends JFrame {
 		JButton btnLevel3 = new JButton("Level 3");
 		btnLevel3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Level3Window.main();
 			}
 		});
 		btnLevel3.setBounds(194, 382, 89, 23);

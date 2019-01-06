@@ -1,4 +1,4 @@
-package ie.gmit.sw.misc;
+package ie.gmit.sw.game;
 
 public class FindExit {
 	

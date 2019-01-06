@@ -1,9 +1,11 @@
-package ie.gmit.sw.Levels;
+package ie.gmit.sw.Levels.Level2;
 
 import java.awt.*;
 import javax.swing.*;
 
-public class TutorialWindow extends JFrame {
+import ie.gmit.sw.Levels.Level1.Level1Settings;
+
+public class Level2Window extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -12,27 +14,27 @@ public class TutorialWindow extends JFrame {
 	 * image in the images/ground/ directory.
 	 */
 	private int[][] model = { 
-			{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 2},
-			{ 0, 1, 0, 0, 0, 0, 0, 0, 0, 2},
-			{ 0, 0, 2, 0, 0, 0, 0, 0, 0, 2},
-			{ 0, 0, 0, 1, 0, 0, 0, 0, 0, 2},
-			{ 2, 2, 2, 2, 1, 0, 0, 0, 0, 2},
-			{ 3, 3, 3, 3, 1, 1, 1, 0, 0, 1},
-			{ 5, 5, 5, 5, 3, 3, 1, 1, 1, 1},
-			{ 4, 4, 4, 5, 3, 3, 1, 0, 0, 0},
-			{ 4, 4, 4, 4, 5, 3, 1, 6, 6, 6},
-			{ 4, 4, 4, 4, 4, 3, 1, 7, 7, 7}
+			{1, 1, 4, 4, 4, 4, 4, 4, 4, 4},
+			{1, 4, 4, 4, 4, 4, 4, 4, 4, 4},
+			{1, 1, 4, 4, 1, 4, 1, 4, 1, 4},
+			{1, 4, 4, 1, 1, 1, 1, 1, 1, 4},
+			{1, 1, 4, 4, 1, 4, 1, 4, 1, 1},
+			{1, 4, 4, 4, 4, 4, 4, 4, 1, 4},
+			{1, 1, 4, 4, 4, 4, 4, 1, 1, 1},
+			{1, 4, 1, 4, 1, 4, 1, 4, 1, 4},
+			{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+			{4, 4, 1, 4, 1, 4, 1, 4, 1, 4}
 	};
 	
 	//This matrix is a representation of where objects (things) in the game are placed
 	private int[][] objects = { 
-			{0, 0, 0, 5, 5, 5, 5, 5, 5, 0},
-			{5, 0, 0, 0, 5, 5, 5, 5, 5, 0},
-			{5, 5, 0, 0, 0, 5, 5, 5, 5, 9},
-			{5, 5, 2, 0, 0, 0, 5, 5, 5, 0},
-			{0, 0, 0, 0, 0, 0, 0, 5, 5, 0},
-			{0, 0, 0, 0, 0, 0, 0, 0, 5, 0},
-			{0, 0, 0, 0, 0, 3, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 9, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 			{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
@@ -49,7 +51,7 @@ public class TutorialWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TutorialWindow window = new TutorialWindow();
+					Level2Window window = new Level2Window();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -58,7 +60,7 @@ public class TutorialWindow extends JFrame {
 		});
 	}
 	
-	public TutorialWindow() throws Exception {
+	public Level2Window() throws Exception {
 		
 		final Image img = new ImageIcon(this.getClass().getResource("/resources/images/menu/castle.png")).getImage();
 		
@@ -70,10 +72,10 @@ public class TutorialWindow extends JFrame {
 		panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.SOUTH);
 		
-		infoLabel = new JLabel("Welcome to the  tutorial! Use arrow keys to change direction and X to move.");
+		infoLabel = new JLabel("Get to the end without hitting the knight");
 		panel.add(infoLabel);
 		
-		TutorialSettings view = new TutorialSettings(model, objects, infoLabel, frame);
+		Level2Settings view = new Level2Settings(model, objects, infoLabel, frame);
 		Dimension d = new Dimension(Level1Settings.DEFAULT_VIEW_SIZE, Level1Settings.DEFAULT_VIEW_SIZE/2);
 		view.setPreferredSize(d);
 		view.setMinimumSize(d);

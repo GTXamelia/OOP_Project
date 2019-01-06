@@ -20,8 +20,8 @@ public class Collision {
             if(player.getPosition().getX() == local[0] && player.getPosition().getY() == local[1]){
             	infoLabel.setText("Done");
             	frame.dispose();
+            	System.out.println(i);
             }
 	    }
-		
 	}
 }
