@@ -3,8 +3,6 @@ package ie.gmit.sw.Levels.Level2;
 import java.awt.*;
 import javax.swing.*;
 
-import ie.gmit.sw.Levels.Level1.Level1Settings;
-
 public class Level2Window extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
@@ -76,7 +74,7 @@ public class Level2Window extends JFrame {
 		panel.add(infoLabel);
 		
 		Level2Settings view = new Level2Settings(model, objects, infoLabel, frame);
-		Dimension d = new Dimension(Level1Settings.DEFAULT_VIEW_SIZE, Level1Settings.DEFAULT_VIEW_SIZE/2);
+		Dimension d = new Dimension(Level2Settings.DEFAULT_VIEW_SIZE, Level2Settings.DEFAULT_VIEW_SIZE/2);
 		view.setPreferredSize(d);
 		view.setMinimumSize(d);
 		view.setMaximumSize(d);

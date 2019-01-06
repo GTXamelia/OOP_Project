@@ -136,7 +136,7 @@ public class Level2Settings extends JPanel implements ActionListener, KeyListene
 		enemy3Move.startMove(enemies[2], matrix, 6, 6);
 		enemy4Move.startMove(enemies[3], matrix, 10, 4);
 		
-		Collision.playerCollision(enemies, player, infoLabel, local, frame, 1, 1);
+		Collision.playerCollision(enemies, player, infoLabel, local, frame, 1, 0);
 	}
 	
 	//This method breaks the SRP

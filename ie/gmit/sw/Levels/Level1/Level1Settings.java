@@ -24,7 +24,6 @@ public class Level1Settings extends JPanel implements ActionListener, KeyListene
 	private Sprite[] enemies  = new Sprite[1];
 	private JLabel infoLabel;
 	private EnemyMovement enemy1Move = new EnemyMovement();
-	private int[] initialSpawnPoint;
 	
 	//Do we really need two models like this?
 	private int[][] matrix;
