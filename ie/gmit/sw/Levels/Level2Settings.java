@@ -13,7 +13,7 @@ import ie.gmit.sw.sprites.EnemyMovement;
 import ie.gmit.sw.sprites.Point;
 import ie.gmit.sw.sprites.Sprite;
 
-public class Level1Settings extends JPanel implements ActionListener, KeyListener { 
+public class Level2Settings extends JPanel implements ActionListener, KeyListener { 
 	private static final long serialVersionUID = 777L;
 	private static final int DEFAULT_IMAGE_INDEX = 0;
 	
@@ -24,9 +24,7 @@ public class Level1Settings extends JPanel implements ActionListener, KeyListene
 	private Sprite[] enemies  = new Sprite[1];
 	private JLabel infoLabel;
 	private EnemyMovement enemy1Move = new EnemyMovement();
-	private int[] initialSpawnPoint;
 	
-	//Do we really need two models like this?
 	private int[][] matrix;
 	private int[][] things;
 	private int[] local;
@@ -39,7 +37,7 @@ public class Level1Settings extends JPanel implements ActionListener, KeyListene
 	private Timer timer; //Controls the repaint interval.
 	private boolean isIsometric = true; //Toggle between 2D and Isometric (Z key)
 	
-	public Level1Settings(int[][] matrix, int[][] things, JLabel infoLabel, JFrame frame) throws Exception {
+	public Level2Settings(int[][] matrix, int[][] things, JLabel infoLabel, JFrame frame) throws Exception {
 		init();
 		this.matrix = matrix;
 		this.things = things;

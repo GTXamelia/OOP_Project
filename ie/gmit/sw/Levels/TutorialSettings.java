@@ -126,7 +126,7 @@ public class TutorialSettings extends JPanel implements ActionListener, KeyListe
 		
 		enemy2Move.startMove(enemies[1], matrix, 10, 5);
 		
-		Collision.playerCollision(enemies, player, infoLabel, local, frame);
+		Collision.playerCollision(enemies, player, infoLabel, local, frame, 0, 0);
 	}
 	
 	//This method breaks the SRP
